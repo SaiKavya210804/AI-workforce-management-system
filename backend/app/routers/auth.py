@@ -700,9 +700,14 @@ async def login(payload: LoginRequest):
         )
 
     await ensure_bootstrap_accounts()
-    await ensure_manager_accounts()
 
     account = await _lookup_account(payload.identifier)
+    if not account:
+        # Manager accounts are provisioned from employee records; only perform this
+        # sync when the lookup misses, so the common successful login path remains fast.
+        await ensure_manager_accounts()
+        account = await _lookup_account(payload.identifier)
+
     if not account:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
