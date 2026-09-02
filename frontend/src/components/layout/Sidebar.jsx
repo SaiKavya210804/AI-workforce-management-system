@@ -42,7 +42,7 @@ export const Sidebar = ({
     insights: [
       { id: 'ai_planning', label: 'AI Workforce Planning', icon: BrainCircuit, roles: ['HR_ADMIN'] },
       { id: 'audit', label: 'Audit Logs', icon: ShieldAlert, roles: ['HR_ADMIN'] },
-      { id: 'settings', label: 'System Settings', icon: Settings, roles: ['HR_ADMIN'] },
+      // { id: 'settings', label: 'System Settings', icon: Settings, roles: ['HR_ADMIN'] },
     ],
   };
 
